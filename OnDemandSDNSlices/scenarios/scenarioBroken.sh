@@ -6,6 +6,11 @@ printf "[INFO] Loading Scenario Broken\n\n"
 
 printf "[INFO] Setting up switches...\n\n"
 
+for bridge in $(sudo ovs-vsctl list-br)
+do
+    sudo ovs-ofctl del-flows $bridge
+done
+
 # Switch 1
 printf "Switch 1:\n"
 sudo ovs-vsctl -- \

@@ -14,11 +14,9 @@ from time import sleep
 
 import params
 
-def mapNetwork(net: Mininet):
+def mapNetworkScenarios(net: Mininet, host_pairs: list = [["h1","h2"],["h3","h4"],["h5","h6"],["h7","h8"]]):
 
     network_map = []
-    processed_pairs = []
-
     speed_tag = ["","K","M","G","T"]
 
     to_float = lambda x: float(re.sub(r'[^\d.]+','', str(x)))
@@ -37,82 +35,55 @@ def mapNetwork(net: Mininet):
         
         return bandwidth_value
 
-    # Get host pairs
-    for node in net.hosts:
+    for pair in host_pairs:
+
+        hosts = []
+
+        for host in net.hosts:
+            if host.name in pair:
+                hosts.append(host)
         
-        for dest in net.hosts:
-            
-            if node == dest:
-                continue
+        if len(hosts) != 2:
+            continue
 
-            node_tag = int(re.sub('[^0-9]','', node.name))
-            dest_tag = int(re.sub('[^0-9]','', dest.name))
+        h1, h2 = hosts
 
-            pair = f"{node.name}-{dest.name}" if node_tag < dest_tag else f"{dest.name}-{node.name}"
+        client, server = net.iperf(hosts=[h1, h2], seconds=1)
 
-            if pair in processed_pairs:
-                continue
+        server1 = to_bps(server)
+        client1 = to_bps(client)
+        
+        client, server = net.iperf(hosts=[h2, h1], seconds=1)
 
-            processed_pairs.append(pair)
+        server2 = to_bps(server)
+        client2 = to_bps(client)
 
-            result = net.ping([node, dest],timeout="0.5")
+        server = round((server1 + server2)/2,2)
+        server_value = round(server,2)
+        server_str = f"{round(server_value / (1000 ** (len(str(int(server))) % 4)),2)} {speed_tag[len(str(int(server))) % 4]}bits/sec"
 
-            if result == 100:
-                continue
-            
-            # Ping host1 - host2 and viceversa. Then, calculate the average speed of each host
-            server, client = net.iperf(hosts=[node, dest], seconds=1)
+        client = round((client1 + client2)/2,2)
+        client_value = round(client, 2)
+        client_str = f"{round(client_value / (1000 ** (len(str(int(client))) % 4)),2)} {speed_tag[len(str(int(client))) % 4]}bits/sec"
+        
+        # Add items to the network map
+        network_map.append({
+            "host1": {
+                "name": h1.name,
+                "speed_value": server_value,
+                "speed_str": server_str,
+                #"node": node
+            },
 
-            server1 = to_bps(server)
-            client1 = to_bps(client)
-            
-            client, server = net.iperf(hosts=[dest, node], seconds=1)
-
-            server2 = to_bps(server)
-            client2 = to_bps(client)
-
-            server = round((server1 + server2)/2,2)
-            server_value = round(server / (1000 ** (len(str(int(server))) % 4)),2)
-            server_str = f"{server_value} {speed_tag[len(str(int(server))) % 4]}bits/sec"
-
-            client = round((client1 + client2)/2,2)
-            client_value = round(client / (1000 ** (len(str(int(client))) % 4)),2)
-            client_str = f"{client_value} {speed_tag[len(str(int(client))) % 4]}bits/sec"
-
-            # Add items to the network map
-            network_map.append({
-                "host1": {
-                    "name": node.name,
-                    "speed_value": server_value,
-                    "speed_str": server_str,
-                    #"node": node
-                },
-
-                "host2": {
-                    "name": dest.name,
-                    "speed_value": client_value,
-                    "speed_str": client_str,
-                    #"node": dest
-                }
-            })
-
+            "host2": {
+                "name": h2.name,
+                "speed_value": client_value,
+                "speed_str": client_str,
+                #"node": dest
+            }
+        })
+    
     return network_map
-        
-class Interface():
-
-    def __init__(self, interface: TCIntf) -> None:
-        self.interface = interface
-
-        self.ip = interface.ip
-        self.mac = interface.mac
-        self.nameToIntf = interface.name
-        self.name = interface.node.name
-
-class Link():
-
-    def __init__(self, interface1: Interface, interface2: Interface) -> None:
-        self.interface1 = interface1
-        self.interface2 = interface2
 
 class NetworkTopology(Topo):
     
@@ -177,8 +148,7 @@ def start(controller: RemoteController = None):
     print("[INFO] Starting")
     net.start()
 
-    #system("clear")
-
+    system("clear")
 
     if __name__ == "__main__":
         CLI(net)
@@ -204,8 +174,8 @@ def start(controller: RemoteController = None):
             command = data.decode()
 
             # Parse command
-            if command == "mapNetwork":
-                network_map = mapNetwork(net)
+            if command == "mapNetworkScenarios":
+                network_map = mapNetworkScenarios(net)
                 network_map = json.dumps(network_map)
                 connection.sendall(network_map.encode())
 

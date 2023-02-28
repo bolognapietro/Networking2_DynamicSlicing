@@ -6,6 +6,11 @@ printf "[INFO] Loading Scenario BothSlice\n\n"
 
 printf "[INFO] Setting up switches...\n\n"
 
+for bridge in $(sudo ovs-vsctl list-br)
+do
+    sudo ovs-ofctl del-flows $bridge
+done
+
 # Switch 1
 printf "Switch 1:\n"
 sudo ovs-vsctl -- \
@@ -38,7 +43,7 @@ set port s3-eth2 qos=@newqos -- \
 --id=@newqos create QoS type=linux-htb \
 other-config:max-rate=200000000 \
 queues:34=@2q queues:78=@4q -- \
---id=@2q create queue other-config:min-rate=1000000 other-config:max-rate=20000000
+--id=@2q create queue other-config:min-rate=1000000 other-config:max-rate=20000000 -- \
 --id=@4q create queue other-config:min-rate=1000000 other-config:max-rate=80000000
 
 # Switch 4

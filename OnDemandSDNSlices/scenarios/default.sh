@@ -19,7 +19,7 @@ set port s1-eth2 qos=@newqos -- \
 --id=@newqos create QoS type=linux-htb \
 other-config:max-rate=200000000 \
 queues:12=@1q queues:34=@1q -- \
---id=@1q create queue other-config:min-rate=1000000 other-config:max-rate=100000000
+--id=@1q create queue other-config:min-rate=1000000 other-config:max-rate=100000000 -- \
 --id=@2q create queue other-config:min-rate=1000000 other-config:max-rate=100000000
 
 # Switch 2
@@ -50,7 +50,7 @@ set port s4-eth2 qos=@newqos -- \
 --id=@newqos create QoS type=linux-htb \
 other-config:max-rate=200000000 \
 queues:12=@1q queues:34=@1q -- \
---id=@1q create queue other-config:min-rate=1000000 other-config:max-rate=100000000
+--id=@1q create queue other-config:min-rate=1000000 other-config:max-rate=100000000 -- \
 --id=@2q create queue other-config:min-rate=1000000 other-config:max-rate=100000000
 
 # Creating links

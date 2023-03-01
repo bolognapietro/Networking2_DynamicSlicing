@@ -167,7 +167,7 @@ function mapNetworkScenarios(coldstart = false)
                     rows[7].getElementsByTagName("td")[3].innerText = "-";
                     rows[8].getElementsByTagName("td")[3].innerText = "-";
 
-                    document.getElementById("scenario").getElementsByTagName("img")[0].src = "static/default.png";
+                    document.getElementById("scenario").getElementsByTagName("img")[0].src = "static/images/default.png";
                 }
                 else if(scenario == 1)
                 {
@@ -180,7 +180,7 @@ function mapNetworkScenarios(coldstart = false)
                     rows[7].getElementsByTagName("td")[3].innerText = "-";
                     rows[8].getElementsByTagName("td")[3].innerText = "-";
 
-                    document.getElementById("scenario").getElementsByTagName("img")[0].src = "static/upper.png";
+                    document.getElementById("scenario").getElementsByTagName("img")[0].src = "static/images/upper.png";
                 }
                 else if(scenario == 2)
                 {
@@ -193,7 +193,7 @@ function mapNetworkScenarios(coldstart = false)
                     rows[7].getElementsByTagName("td")[3].innerText = "80 Mbits/sec";
                     rows[8].getElementsByTagName("td")[3].innerText = "80 Mbits/sec";
 
-                    document.getElementById("scenario").getElementsByTagName("img")[0].src = "static/lower.png";
+                    document.getElementById("scenario").getElementsByTagName("img")[0].src = "static/images/lower.png";
                 }
                 else if(scenario == 3)
                 {
@@ -206,7 +206,7 @@ function mapNetworkScenarios(coldstart = false)
                     rows[7].getElementsByTagName("td")[3].innerText = "80 Mbits/sec";
                     rows[8].getElementsByTagName("td")[3].innerText = "80 Mbits/sec";
 
-                    document.getElementById("scenario").getElementsByTagName("img")[0].src = "static/all.png";
+                    document.getElementById("scenario").getElementsByTagName("img")[0].src = "static/images/all.png";
                 }
                 else if(scenario == 4)
                 {
@@ -219,7 +219,7 @@ function mapNetworkScenarios(coldstart = false)
                     rows[7].getElementsByTagName("td")[3].innerText = "40 Mbits/sec";
                     rows[8].getElementsByTagName("td")[3].innerText = "40 Mbits/sec";
 
-                    document.getElementById("scenario").getElementsByTagName("img")[0].src = "static/broken.png";
+                    document.getElementById("scenario").getElementsByTagName("img")[0].src = "static/images/broken.png";
                 }
 
                 if(scenario != -1)

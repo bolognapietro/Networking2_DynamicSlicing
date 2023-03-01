@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+
+        <link rel="stylesheet" href="static/styles.css" />
+        <script src="static/styles.js"></script>
+        <script src="static/logic.js"></script>
+
+        <title>Dashboard</title>
+    </head>
+
+    <body>
+        <div id="popup"></div>
+
+        <div class="overlay" hidden>
+            <div class="loader"></div>
+        </div>
+
+        <div class="top-bar">
+            <div class="text">
+                <h1>On Demand SDN Slices</h1>
+            </div>
+            <div class="switch-container">
+                <h3>Network OFF</h3>
+                <label class="switch">
+                    <input type="checkbox" onchange="updateSwitchText()" />
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+
+        <div id="networkContainer">
+            <div
+                style="display: flex; justify-content: center; margin-top: 50px"
+            >
+                <button class="rounded-button">Scenario - Default</button>
+                <button class="rounded-button">Scenario - Upper</button>
+                <button class="rounded-button">Scenario - Lower</button>
+                <button class="rounded-button">Scenario - All</button>
+                <button class="rounded-button">Scenario - Broken</button>
+            </div>
+
+            <div class="container">
+                <table>
+                    <tr>
+                        <th>#</th>
+                        <th>Nodes</th>
+                        <th>Bandwidth (R)</th>
+                        <th>Bandwidth (T)</th>
+                        <th>Status</th>
+                    </tr>
+                    <tr>
+                        <td>h1</td>
+                        <td>
+                            <img class="host-img" src="static/host.png" />Host
+                        </td>
+                        <td class="none">-</td>
+                        <td class="none">-</td>
+                        <td><span class="circle circle-red" /></td>
+                    </tr>
+
+                    <tr>
+                        <td>h2</td>
+                        <td>
+                            <img class="host-img" src="static/host.png" />Host
+                        </td>
+                        <td class="none">-</td>
+                        <td class="none">-</td>
+                        <td><span class="circle circle-red" /></td>
+                    </tr>
+
+                    <tr>
+                        <td>h3</td>
+                        <td>
+                            <img class="host-img" src="static/host.png" />Host
+                        </td>
+                        <td class="none">-</td>
+                        <td class="none">-</td>
+                        <td><span class="circle circle-red" /></td>
+                    </tr>
+
+                    <tr>
+                        <td>h4</td>
+                        <td>
+                            <img class="host-img" src="static/host.png" />Host
+                        </td>
+                        <td class="none">-</td>
+                        <td class="none">-</td>
+                        <td><span class="circle circle-red" /></td>
+                    </tr>
+
+                    <tr>
+                        <td>h5</td>
+                        <td>
+                            <img class="host-img" src="static/host.png" />Host
+                        </td>
+                        <td class="none">-</td>
+                        <td class="none">-</td>
+                        <td><span class="circle circle-red" /></td>
+                    </tr>
+
+                    <tr>
+                        <td>h6</td>
+                        <td>
+                            <img class="host-img" src="static/host.png" />Host
+                        </td>
+                        <td class="none">-</td>
+                        <td class="none">-</td>
+                        <td><span class="circle circle-red" /></td>
+                    </tr>
+
+                    <tr>
+                        <td>h7</td>
+                        <td>
+                            <img class="host-img" src="static/host.png" />Host
+                        </td>
+                        <td class="none">-</td>
+                        <td class="none">-</td>
+                        <td><span class="circle circle-red" /></td>
+                    </tr>
+
+                    <tr>
+                        <td>h8</td>
+                        <td>
+                            <img class="host-img" src="static/host.png" />Host
+                        </td>
+                        <td class="none">-</td>
+                        <td class="none">-</td>
+                        <td><span class="circle circle-red" /></td>
+                    </tr>
+
+                    <tr>
+                        <td>s1</td>
+                        <td>
+                            <img
+                                class="switch-img"
+                                src="static/switch.png"
+                            />Switch
+                        </td>
+                        <td class="none">-</td>
+                        <td class="none">-</td>
+                        <td><span class="circle circle-red" /></td>
+                    </tr>
+
+                    <tr>
+                        <td>s2</td>
+                        <td>
+                            <img
+                                class="switch-img"
+                                src="static/switch.png"
+                            />Switch
+                        </td>
+                        <td class="none">-</td>
+                        <td class="none">-</td>
+                        <td><span class="circle circle-red" /></td>
+                    </tr>
+
+                    <tr>
+                        <td>s3</td>
+                        <td>
+                            <img
+                                class="switch-img"
+                                src="static/switch.png"
+                            />Switch
+                        </td>
+                        <td class="none">-</td>
+                        <td class="none">-</td>
+                        <td><span class="circle circle-red" /></td>
+                    </tr>
+
+                    <tr>
+                        <td>s4</td>
+                        <td>
+                            <img
+                                class="switch-img"
+                                src="static/switch.png"
+                            />Switch
+                        </td>
+                        <td class="none">-</td>
+                        <td class="none">-</td>
+                        <td><span class="circle circle-red" /></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div id="scenario" class="container">
+            <img class="scenario-img" src="static/default.png" />
+        </div>
+
+        <script>
+            init();
+        </script>
+    </body>
+</html>

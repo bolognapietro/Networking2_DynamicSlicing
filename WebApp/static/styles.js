@@ -1,16 +1,18 @@
 function showLoading()
 {
+    // Show loading
     if(!document.querySelector(".overlay").hasAttribute("hidden"))
         return;
 
     window.scrollTo(0, 0);
-    
+
     document.querySelector(".overlay").removeAttribute("hidden");
     document.body.style.overflow = "hidden";
 }
 
 function hideLoading()
 {
+    // Hide loading
     if(document.querySelector(".overlay").hasAttribute("hidden"))
         return;
 
@@ -20,6 +22,7 @@ function hideLoading()
 
 function showNetwork()
 {
+    // Show network infos
     if(!document.getElementById("networkContainer").hidden)
         return
 
@@ -32,6 +35,7 @@ function showNetwork()
 
 function hideNetwork()
 {
+    // Hide network infos
     if(document.getElementById("networkContainer").hidden)
         return
 
@@ -44,23 +48,23 @@ function hideNetwork()
 
 function updateSwitchText() 
 {
+    // Handle switch button
     var switchbtn = document.getElementsByClassName("switch-container")[0].getElementsByTagName("input")[0];
 
+    showLoading();
+
     if (switchbtn.checked) 
-    {
-        showLoading();
         networkON();
-    } 
     else 
-    {
-        showLoading();
         networkOFF();
-    }
 }
 
 function init()
 {
+    // Show loading
     showLoading();
+
+    // Hide network infos
     hideNetwork();
 
     var buttons = document.querySelectorAll(".rounded-button");
@@ -70,8 +74,10 @@ function init()
     {
         let scenarioId = i;
 
+        // Assign a function to the click event of each scenario button
         buttons[i].addEventListener("click", function() {
             
+            // If clicked, active the current button and disable the others
             if(this.classList.contains("active"))
                 return;
                 
@@ -83,25 +89,29 @@ function init()
 
             this.classList.remove("inactive");
             this.classList.add("active");
-
-            // load scenario via loading(f)
+            
+            // Show loading
             showLoading();
+
+            // Change scenario 
             changeScenario(scenarioId);
         });
-
+        
+        // Set scenario button description
         let text = "";
 
         if (i == 0)
-            text = "Only hosts h1, h2, h3, h4 are connected.";
+            text = "Hosts h1, h2, h3, h4 are connected.";
         else if (i == 1)
-            text = "Only hosts h1, h2, h3, h4, h5, h6 are connected.";
+            text = "Hosts h1, h2, h3, h4, h5, h6 are connected.";
         else if (i == 2)
-            text = "Only hosts h1, h2, h3, h4, h7, h8 are connected.";
+            text = "Hosts h1, h2, h3, h4, h7, h8 are connected.";
         else if (i == 3)
             text = "All the hosts are connected.";
         else if (i == 4) 
             text = "Switch s3 is broken";
         
+        // Add mouse move event which will show the description
         buttons[i].addEventListener("mousemove", function(event) 
         {
             const x = event.clientX;
@@ -115,14 +125,17 @@ function init()
             popup.style.display = "block";
         });
 
+        // Hide description
         buttons[i].addEventListener("mouseout", function() 
         {
             document.getElementById("popup").style.display = "none";
         });
 
+        // Set button as non selected
         buttons[i].classList.add("inactive");
     }
 
-    ping();
-    mapNetworkScenarios(true);
+    // Init WebApp
+    ping(); // Check if mininet network is online
+    mapNetworkScenarios(true); // Try to get the network map
 }

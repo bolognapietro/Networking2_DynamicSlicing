@@ -1,15 +1,18 @@
+// Sleep function
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 function networkON()
 {
+    // Switch on the mininet network
     let xhttp = new XMLHttpRequest();
     xhttp.open("GET", "networkON");
 
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) 
         {
+            // If everything goes ok, set the current scenario to the default one
             changeScenario(0);
         }
     };
@@ -19,12 +22,14 @@ function networkON()
 
 function networkOFF()
 {
+    // Switch off the mininet 
     let xhttp = new XMLHttpRequest();
     xhttp.open("GET", "networkOFF");
 
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) 
         {
+            // If everything goes ok, hide loading and hide network infos
             hideLoading();
             hideNetwork();
         }
@@ -35,6 +40,7 @@ function networkOFF()
 
 function mapNetworkScenarios(coldstart = false)
 {
+    // This function retrieves the host html element based on the given name
     let find = function(name) {
         var table = document.getElementsByTagName("table")[0];
         var rows = table.getElementsByTagName("tr");
@@ -56,6 +62,7 @@ function mapNetworkScenarios(coldstart = false)
         return selected
     };
 
+    // Check if a function can be converted to a json object
     function isJsonString(str) 
     {
         try 
@@ -71,6 +78,7 @@ function mapNetworkScenarios(coldstart = false)
         return true;
     }
 
+    // Ask for network map
     let xhttp = new XMLHttpRequest();
     xhttp.open("GET", "mapNetworkScenarios");
 
@@ -79,13 +87,16 @@ function mapNetworkScenarios(coldstart = false)
         {
             let data = this.responseText;
             
+            // Deactivate all the scenario buttons
             document.querySelectorAll(".rounded-button").forEach((node) => {
                 node.classList.remove("active");
                 node.classList.add("inactive");
             });
-
+            
+            // Check if data is valid
             if(!isJsonString(data))
             {
+                // If not, set to "none" all the network infos
                 var table = document.getElementsByTagName("table")[0];
                 var rows = table.getElementsByTagName("tr");
 
@@ -98,12 +109,14 @@ function mapNetworkScenarios(coldstart = false)
             }
             else
             {
+                // Parse data
                 data = JSON.parse(data);
                 data = JSON.parse(data);
 
                 scenario = data["scenario"]
                 let name = (scenario == -1) ? "-" : "";
-
+                
+                // Assign to each host its bandwidth 
                 for(let i=0; i<data["network"].length; i++)
                 {
                     let pair = data["network"][i];
@@ -121,6 +134,7 @@ function mapNetworkScenarios(coldstart = false)
                     host2_td[4].getElementsByTagName("span")[0].className = (host2["speed"] == "-") ? "circle circle-red" : "circle circle-green";
                 }
 
+                // Assign to each switch its theoretical bandwidth based on the current scenario
                 var rows = document.getElementsByTagName("tr");
 
                 for(let i=9; i<13; i++)
@@ -141,8 +155,7 @@ function mapNetworkScenarios(coldstart = false)
                     td[4].getElementsByTagName("span")[0].className = className;
                 }
                 
-                console.log(scenario)
-                
+                // Assign to each host its theoretical bandwidth based on the current scenario
                 if(scenario == 0)
                 {
                     rows[1].getElementsByTagName("td")[3].innerText = "100 Mbits/sec";
@@ -217,8 +230,10 @@ function mapNetworkScenarios(coldstart = false)
                 }
             }
             
+            // Loading done
             hideLoading();
-
+            
+            // If this function is called by Init(), show network infos
             if(!coldstart)
             showNetwork();
         }
@@ -229,6 +244,7 @@ function mapNetworkScenarios(coldstart = false)
 
 function ping()
 {
+    // Ping mininet network
     let xhttp = new XMLHttpRequest();
     xhttp.open("GET", "ping");
 
@@ -237,22 +253,16 @@ function ping()
         {
             data = this.responseText;
             
+            // Hide or show the network infos based on the result
             if(data == "true")
                 showNetwork();
             else
                 hideNetwork();
             
-            //await sleep(5000);
-            //ping();
-        }
-
-        /*
-        else if(this.readyState == 4)
-        {
+                // Repeat after 5 seconds
             await sleep(5000);
-            ping()
+            ping();
         }
-        */
     
     };
 
@@ -261,6 +271,7 @@ function ping()
 
 function changeScenario(scenarioId)
 {
+    // Change scenario with the given scenario id
     let xhttp = new XMLHttpRequest();
     xhttp.open("POST", "changeScenario");
     xhttp.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
@@ -269,6 +280,7 @@ function changeScenario(scenarioId)
     {
         if (this.readyState == 4 && this.status == 200) 
         {
+            // Ask for a new network map after changing the scenario
             mapNetworkScenarios();
         }
     };

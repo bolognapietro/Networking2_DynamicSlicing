@@ -1,6 +1,6 @@
 from os.path import join, dirname, realpath
 
-SCENARIOS_PATH = "/home/comnetsemu/chri/OnDemandSDNSlices"
+SCENARIOS_PATH = "<SCENARIOS PATH>"
 
 CONTROLLER_NAME = "c1"
 CONTROLLER_IP = "127.0.0.1"

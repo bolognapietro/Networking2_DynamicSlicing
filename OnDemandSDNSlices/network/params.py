@@ -1,6 +1,7 @@
 from os.path import join, dirname, realpath
+import os
 
-SCENARIOS_PATH = "<SCENARIOS PATH>"
+SCENARIOS_PATH = os.path.normpath(dirname(realpath(__file__)) + os.sep + os.pardir)
 
 CONTROLLER_NAME = "c1"
 CONTROLLER_IP = "127.0.0.1"

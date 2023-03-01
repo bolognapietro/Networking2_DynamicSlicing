@@ -10,7 +10,7 @@ SSH_PORT = 2222
 SOCKET_HOST = "127.0.0.1"
 SOCKET_PORT = 2223
 
-LAUNCHER_PATH = "/home/comnetsemu/chri/OnDemandSDNSlices/launcher.py"
+LAUNCHER_PATH = "<LAUNCHER PATH>"
 
 def connect():
 

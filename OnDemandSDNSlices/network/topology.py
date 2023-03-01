@@ -4,15 +4,12 @@ from mininet.topo import Topo
 from mininet.net import Mininet
 from mininet.node import OVSKernelSwitch, RemoteController
 from mininet.cli import CLI
-from mininet.link import TCLink, TCIntf
+from mininet.link import TCLink
 
 from os import system
 from os.path import join
-import re
-import socket
 import json
-from time import sleep
-from threading import Thread
+import socket
 import subprocess
 
 import params
@@ -23,6 +20,7 @@ def mapNetworkScenarios(net: Mininet, host_pairs: list = [["h1","h2"],["h3","h4"
 
     global CURRENT_SCENARIO
 
+    # Execute iperf on each pair
     network_map = {"network": [], "scenario": CURRENT_SCENARIO}
 
     for pair in host_pairs:
@@ -38,16 +36,17 @@ def mapNetworkScenarios(net: Mininet, host_pairs: list = [["h1","h2"],["h3","h4"
 
         h1, h2 = hosts
 
+        # Check if hosts are connected
         result = net.ping([h1,h2],timeout="0.5")
 
         if result < 100:
-            host1_speed, host2_speed = net.iperf(hosts=[h1, h2], seconds=1)
+            host1_speed, host2_speed = net.iperf(hosts=[h1, h2], seconds=1) # Host connected, testing bandwidth
 
         else:
             host1_speed = "-"
             host2_speed = "-"
         
-        # Add items to the network map
+        # Add results to the network map
         network_map["network"].append({
             "host1": {
                 "name": h1.name,
@@ -57,7 +56,6 @@ def mapNetworkScenarios(net: Mininet, host_pairs: list = [["h1","h2"],["h3","h4"
             "host2": {
                 "name": h2.name,
                 "speed": host2_speed
-                #"node": dest
             }
         })
     
@@ -131,10 +129,13 @@ def start(controller: RemoteController = None):
     system("clear")
 
     if __name__ == "__main__":
+
+        # For debug
         CLI(net)
 
     else:
 
+        # Socket used for the communication between the VM (this) and the host
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         s.bind(("", params.BRIDGE_PORT))
@@ -148,6 +149,7 @@ def start(controller: RemoteController = None):
             connection, addr = s.accept()
             chain = True
 
+            # Keep the connection open until the sequence of messages has not been received
             while chain:
                 
                 # Wait for a valid command
@@ -159,15 +161,15 @@ def start(controller: RemoteController = None):
                 command = data.decode()
 
                 if command == "#":
-                    chain = False
+                    chain = False # Sequence terminated
 
                 # Parse command
-                if command == "mapNetworkScenarios":
+                if command == "mapNetworkScenarios": # Network scan
                     network_map = mapNetworkScenarios(net)
                     network_map = json.dumps(network_map)
                     connection.sendall(network_map.encode())
                 
-                elif command.startswith("scenarioId="):
+                elif command.startswith("scenarioId="): # Set new scenario
                     CURRENT_SCENARIO = int(command.replace("scenarioId=",""))
 
                     if CURRENT_SCENARIO == 0:
@@ -186,14 +188,15 @@ def start(controller: RemoteController = None):
 
                     connection.sendall("ack".encode())
 
-                elif command == "stop":
+                elif command == "stop": # Stop mininet network
                     connection.sendall("ack".encode())
                     run = False
                     break
 
-                else:
+                else: # The ack is used by the client (host) to wait for a responce
                     connection.sendall("ack".encode())
         
+        # Close the socket
         s.close()
 
     # Stop
@@ -203,4 +206,4 @@ def start(controller: RemoteController = None):
     system("sudo mn -c && clear")
 
 if __name__ == "__main__":
-    start()
+    start() # For debug

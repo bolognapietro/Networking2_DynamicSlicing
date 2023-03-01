@@ -9,8 +9,11 @@ import params
 def launch():
 
     # Close previous socket (if any)
+    #! Attention: be sure that the selected bridge port is not used by system processes but is reserved for this script
+
     while True:
 
+        # Check for processes that are using the BRIDGE_PORT
         output = subprocess.Popen(f"sudo lsof -i:{params.BRIDGE_PORT}", shell=True, stdout=subprocess.PIPE).communicate()[0].decode()
 
         if len(output):
@@ -22,7 +25,8 @@ def launch():
 
                 if not pid.isnumeric():
                     continue
-
+                
+                # Kill processes
                 system(f"kill -9 {pid}")
         else:
             break

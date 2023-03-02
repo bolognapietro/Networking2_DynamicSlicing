@@ -1,6 +1,32 @@
+function setIcon(iconId)
+{
+    // Change web page icon
+
+    var link = document.querySelector("link[rel~='icon']");
+    if (!link) {
+        link = document.createElement('link');
+        link.rel = 'icon';
+        document.head.appendChild(link);
+    }
+
+    icon = "static/images/";
+
+    if(iconId == 0)
+        icon += "on.ico";
+    else if(iconId == 1)
+        icon += "off.ico";
+    else
+        icon += "loading.ico";
+
+    if(link.href != icon)
+        link.href = icon;
+}
+
 function showLoading()
 {
     // Show loading
+    setIcon(2);
+
     if(!document.querySelector(".overlay").hasAttribute("hidden"))
         return;
 
@@ -23,6 +49,8 @@ function hideLoading()
 function showNetwork()
 {
     // Show network infos
+    setIcon(0);
+
     if(!document.getElementById("networkContainer").hidden)
         return
 
@@ -36,6 +64,8 @@ function showNetwork()
 function hideNetwork()
 {
     // Hide network infos
+    setIcon(1);
+
     if(document.getElementById("networkContainer").hidden)
         return
 

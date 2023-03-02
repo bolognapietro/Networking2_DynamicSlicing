@@ -2,7 +2,7 @@
 
 clear
 
-printf "[INFO] Loading Scenario BothSlice\n\n"
+printf "[INFO] Loading Scenario BothSlice\n"
 
 printf "[INFO] Setting up switches...\n\n"
 

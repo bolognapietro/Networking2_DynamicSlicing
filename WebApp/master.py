@@ -167,8 +167,16 @@ def _exec_command(s: socket.socket, command: str):
 
 def exec_command(command: str):
 
-    s = connect()
-    result = _exec_command(s,command)
-    disconnect(s) # Disconnect once finished
+    try:
+        s = connect()
+        result = _exec_command(s,command)
+        disconnect(s) # Disconnect once finished
+
+    except ConnectionRefusedError:
+        result = "-" # VM not started
+        
+    except Exception as e:
+        print(e) # For debug
+        result = "-"
     
     return result

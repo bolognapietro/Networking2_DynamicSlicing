@@ -2,6 +2,18 @@
 
 # Table of contents
 
+-   [Introduction](#introduction)
+-   [Scenario 1 - Default](#scenario-1---default)
+-   [Scenario 2 - Upper](#scenario-2---upper)
+-   [Scenario 3 - Lower](#scenario-3---lower)
+-   [Scenario 4 - All](#scenario-4---all)
+-   [Scenario 5 - Broken](#scenario-5---broken)
+-   [Installation and Configuration](#installation-and-configuration)
+-   [Gettings started - CLI](#getting-started---cli)
+-   [Gettings started - WebApp](#getting-started---webapp)
+-   [Presentation](#presentation)
+-   [Contacts](#contacts)
+
 # Introduction
 
 The goal of this project is to implement a network slicing approach to enable dynamic activation and deactivation of network slicing via CLI/GUI commands. To achieve this goal, five scenarios are proposed, each with the same network topology. The goal is to observe how the network responds to small or large changes in the different elements of the network.

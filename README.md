@@ -205,7 +205,7 @@ In addition, to verify the accuracy of the network bandwidth, you can check the 
 
 ### VirtualBox - ComNetsEmu
 
-Follow the instruction available at this [link](#https://www.granelli-lab.org/researches/relevant-projects/comnetsemu-labs). Once installed, you will need to follow these additional steps:
+Follow the instruction available at this [link](https://www.granelli-lab.org/researches/relevant-projects/comnetsemu-labs). Once installed, you will need to follow these additional steps:
 
 1. Locate the newly installed VM labeled "*Comnetsemu Ubuntu Stand alone*". Click on the **Settings button** for this VM, and then navigate to the **Network tab**. Once there, select **Adapter 1** and click on the **Advanced button**. From the dropdown menu, select **Port Forwarding**. Next, add the following two rules::
 
@@ -214,13 +214,13 @@ Follow the instruction available at this [link](#https://www.granelli-lab.org/re
 
    The first one is used to allow the Web Application on the host machine to connect via SSH to the VM. The second one is used for the socket used for the communication between the Mininet network and the Web Application.
 
-2. Copy the [OnDemandSDNSlices](#https://github.com/christiansassi/networking-2-project/tree/main/OnDemandSDNSlices) folder inside the VM.
+2. Copy the [OnDemandSDNSlices](https://github.com/christiansassi/networking-2-project/tree/main/OnDemandSDNSlices) folder inside the VM.
 
 > **Note**: the VM must be ON during the entire utilization of the Web Application.
 
 ### WebApp
 
-First, install the required python packages by running `pip install -r requirements.txt` inside the [WebApp](#https://github.com/christiansassi/networking-2-project/tree/main/WebApp) folder. Then, put the path of the [launcher.py](#https://github.com/christiansassi/networking-2-project/blob/main/OnDemandSDNSlices/network/launcher.py) script in the **LAUNCHER_PATH** variable in the [master.py](#https://github.com/christiansassi/networking-2-project/blob/main/WebApp/master.py) script.
+First, install the required python packages by running `pip install -r requirements.txt` inside the [WebApp](https://github.com/christiansassi/networking-2-project/tree/main/WebApp) folder. Then, put the path of the [launcher.py](https://github.com/christiansassi/networking-2-project/blob/main/OnDemandSDNSlices/network/launcher.py) script in the **LAUNCHER_PATH** variable in the [master.py](https://github.com/christiansassi/networking-2-project/blob/main/WebApp/master.py) script.
 
 > **Note**: ensure that the VM remains powered on throughout the entire period of usage of the Web Application.
 
@@ -240,7 +240,7 @@ You are now free to try any command you wish. Simply type `help` to see a list o
 
 Alternatively, instead of using the CLI interface, you can test the Mininet network by connecting to the Web Application and using the provided GUI. In order to do that, start the Web Application by following these steps:
 
-1. Navigate to the [WebApp](#https://github.com/christiansassi/networking-2-project/tree/main/WebApp) folder and execute `python3 WebApp.py`.
+1. Navigate to the [WebApp](https://github.com/christiansassi/networking-2-project/tree/main/WebApp) folder and execute `python3 WebApp.py`.
 2. Now, open your browser and navigate to http://127.0.0.1:5000. 
 
 > **Note**: the port may vary depending on the processes running on your system.
@@ -283,7 +283,7 @@ Moreover, you can view the following informations:
 
 # Presentation
 
-<a href="https://www.canva.com/design/DAFb2NEnqjY/-dY28hInsJRnf7H1ylJOug/edit?utm_content=DAFb2NEnqjY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">Presentation</a>
+[Presentation](https://www.canva.com/design/DAFb2NEnqjY/-dY28hInsJRnf7H1ylJOug/edit?utm_content=DAFb2NEnqjY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
 # Contacts
 

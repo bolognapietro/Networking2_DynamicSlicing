@@ -255,9 +255,20 @@ function ping()
             
             // Hide or show the network infos based on the result
             if(data == "true")
+            {
                 showNetwork();
-            else
+                hideError();
+            }
+            else if(data == "false")
+            {
                 hideNetwork();
+                hideError();
+            }
+            else if(data == "-")
+            {
+                hideNetwork();
+                showError();
+            }
             
                 // Repeat after 5 seconds
             await sleep(5000);

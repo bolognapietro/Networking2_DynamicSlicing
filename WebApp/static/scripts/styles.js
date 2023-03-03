@@ -27,22 +27,22 @@ function showLoading()
     // Show loading
     setIcon(2);
 
-    if(!document.querySelector(".overlay").hasAttribute("hidden"))
+    if(!document.getElementById("loading").hidden)
         return;
 
     window.scrollTo(0, 0);
 
-    document.querySelector(".overlay").removeAttribute("hidden");
+    document.getElementById("loading").hidden = false;
     document.body.style.overflow = "hidden";
 }
 
 function hideLoading()
 {
     // Hide loading
-    if(document.querySelector(".overlay").hasAttribute("hidden"))
+    if(document.getElementById("loading").hidden)
         return;
 
-    document.querySelector(".overlay").setAttribute("hidden", "");
+    document.getElementById("loading").hidden = true;
     document.body.style.overflow = "auto";
 }
 
@@ -52,7 +52,7 @@ function showNetwork()
     setIcon(0);
 
     if(!document.getElementById("networkContainer").hidden)
-        return
+        return;
 
     document.getElementsByClassName("switch-container")[0].getElementsByTagName("input")[0].checked = true;
     document.getElementById("networkContainer").hidden = false;
@@ -67,13 +67,35 @@ function hideNetwork()
     setIcon(1);
 
     if(document.getElementById("networkContainer").hidden)
-        return
+        return;
 
     document.getElementsByClassName("switch-container")[0].getElementsByTagName("input")[0].checked = false;
     document.getElementById("networkContainer").hidden = true;
     document.getElementsByClassName("switch-container")[0].getElementsByTagName("h3")[0].innerText = "Network OFF";
 
     document.getElementById("scenario").hidden = true;
+}
+
+function showError()
+{
+    // Show error
+    if(!document.getElementById("error").hidden)
+        return;
+
+    window.scrollTo(0, 0);
+
+    document.getElementById("error").hidden = false;
+    document.body.style.overflow = "hidden";
+}
+
+function hideError()
+{
+    // Hide error
+    if(document.getElementById("error").hidden)
+        return;
+
+    document.getElementById("error").hidden = true;
+    document.body.style.overflow = "auto";
 }
 
 function updateSwitchText() 

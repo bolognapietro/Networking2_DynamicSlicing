@@ -214,13 +214,13 @@ Follow the instruction available at this [link](https://www.granelli-lab.org/res
 
    The first one is used to allow the Web Application on the host machine to connect via SSH to the VM. The second one is used for the socket used for the communication between the Mininet network and the Web Application.
 
-2. Copy the [OnDemandSDNSlices](https://github.com/christiansassi/networking-2-project/tree/main/OnDemandSDNSlices) folder inside the VM.
+2. Copy the [OnDemandSDNSlices](OnDemandSDNSlices) folder inside the VM.
 
 > **Note**: the VM must be ON during the entire utilization of the Web Application.
 
 ### WebApp
 
-First, install the required python packages by running `pip install -r requirements.txt` inside the [WebApp](https://github.com/christiansassi/networking-2-project/tree/main/WebApp) folder. Then, put the path of the [launcher.py](https://github.com/christiansassi/networking-2-project/blob/main/OnDemandSDNSlices/network/launcher.py) script in the **LAUNCHER_PATH** variable in the [master.py](https://github.com/christiansassi/networking-2-project/blob/main/WebApp/master.py) script.
+First, install the required python packages by running `pip install -r requirements.txt` inside the [WebApp](WebApp) folder. Then, put the path of the [launcher.py](OnDemandSDNSlices/network/launcher.py) script in the **LAUNCHER_PATH** variable in the [master.py](WebApp/master.py) script.
 
 > **Note**: ensure that the VM remains powered on throughout the entire period of usage of the Web Application.
 
@@ -228,9 +228,9 @@ First, install the required python packages by running `pip install -r requireme
 
 It's possible to try and test the project via CLI. In order to do that, start the Mininet network by executing the following commands:
 
-1. Navigate to the [network](https://github.com/christiansassi/networking-2-project/tree/main/OnDemandSDNSlices/network) folder and execute `ryu-manager controller.py`. This command will start the controller.
-2. In another terminal window, navigate to the [network](https://github.com/christiansassi/networking-2-project/tree/main/OnDemandSDNSlices/network) folder and execute `sudo python3 topology.py` and wait until you see the `mininet >` terminal. This command will start the Mininet network in CLI mode.
-3. In another terminal window, navigate to the [scenarios](https://github.com/christiansassi/networking-2-project/tree/main/OnDemandSDNSlices/scenarios) and run the scenario of your choice by executing the corresponding **.sh* file. This script will setup the network to the desired scenario.
+1. Navigate to the [network](OnDemandSDNSlices/network) folder and execute `ryu-manager controller.py`. This command will start the controller.
+2. In another terminal window, navigate to the [network](OnDemandSDNSlices/network) folder and execute `sudo python3 topology.py` and wait until you see the `mininet >` terminal. This command will start the Mininet network in CLI mode.
+3. In another terminal window, navigate to the [scenarios](OnDemandSDNSlices/scenarios) and run the scenario of your choice by executing the corresponding **.sh* file. This script will setup the network to the desired scenario.
 
 You are now free to try any command you wish. Simply type `help` to see a list of all available commands. Once you are done, digit `exit` in the mininet terminal.
 
@@ -240,7 +240,7 @@ You are now free to try any command you wish. Simply type `help` to see a list o
 
 Alternatively, instead of using the CLI interface, you can test the Mininet network by connecting to the Web Application and using the provided GUI. In order to do that, start the Web Application by following these steps:
 
-1. Navigate to the [WebApp](https://github.com/christiansassi/networking-2-project/tree/main/WebApp) folder and execute `python3 WebApp.py`.
+1. Navigate to the [WebApp](WebApp) folder and execute `python3 WebApp.py`.
 2. Now, open your browser and navigate to http://127.0.0.1:5000. 
 
 > **Note**: the port may vary depending on the processes running on your system.

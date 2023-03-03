@@ -32,7 +32,7 @@ The network topology is organized as follow:
 - Four slices, each containing two hosts for a total of eight, `h1-h8`. Two of these slices are common and require 20% of the available bandwidth, while the others are considered critical. This means that when these slices are activated and their hosts are connected, they require 80% of the available bandwidth. The slices are coupled based on the number. Therefore, slices 1 will communicate with switches s1, s2, and s4, while slices 2 will communicate with switches s1, s3, and s4. Of course, this is the normal operation of the network. In case of variations (e.g., a switch failure as happens in scenario 5), they can lead to changes in the packet flow.
 
 <p align="center">
-    <img width="75%" src="assets/scenarios/all-legend.png"/>
+    <img width="90%" src="assets/scenarios/all-legend.png"/>
 </p>
 
 # Scenario 1 - Default

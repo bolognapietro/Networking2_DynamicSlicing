@@ -274,7 +274,7 @@ Alternatively, instead of using the CLI interface, you can test the Mininet netw
 </p>
 <br>
 <p align="center" text-align="center">
-  <img width="75%" src="assets/videos/full-speed.gif">
+  <img width="75%" src="assets/videos/speed.gif">
   <br>
   <span><i>Overview</i></span>
 </p>

@@ -273,6 +273,12 @@ Alternatively, instead of using the CLI interface, you can test the Mininet netw
   <span><i>Mininet network ON</i></span>
 </p>
 <br>
+<p align="center" text-align="center">
+  <img width="75%" src="assets/videos/full-speed.gif">
+  <br>
+  <span><i>Overview</i></span>
+</p>
+<br>
 
 The Web Application provides the ability to perform the following operations:
 

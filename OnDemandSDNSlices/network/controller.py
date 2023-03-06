@@ -131,7 +131,7 @@ class TrafficSlicing(app_manager.RyuApp):
         out = datapath.ofproto_parser.OFPPacketOut(
             datapath = datapath, # It's a reference to the switch
             buffer_id = msg.buffer_id, # Buffer ID if any, otherwise it will be datapath.ofproto.OFP_NO_BUFFER
-            in_port = in_port, # Destination input port
+            in_port = in_port, # Origin input port
             actions = actions, # Specifies a list of actions to be executed if the flow entry is matched
             data = data, # Packet's data
         )

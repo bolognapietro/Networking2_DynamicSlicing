@@ -147,10 +147,9 @@ def start(controller: RemoteController = None):
 
             # Wait for a new connection
             connection, addr = s.accept()
-            chain = True
 
             # Keep the connection open until the sequence of messages has not been received
-            while chain:
+            while True:
                 
                 # Wait for a valid command
                 data = connection.recv(1024)
@@ -161,7 +160,7 @@ def start(controller: RemoteController = None):
                 command = data.decode()
 
                 if command == "#":
-                    chain = False # Sequence terminated
+                    break # Sequence terminated
 
                 # Parse command
                 if command == "mapNetworkScenarios": # Network scan

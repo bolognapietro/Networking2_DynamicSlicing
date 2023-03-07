@@ -52,6 +52,7 @@ By running `pingall` command, it will show which hosts can be reached by a singl
 <div style="text-align: left;">
     <img width="50%" src="assets/pingall/default.png"/>
 </div>
+<br>
 
 In addition, to verify the accuracy of the network bandwidth, you can check the bandwidth between two hosts via `iperf <host1> <host2>` command.
 
@@ -82,6 +83,7 @@ By running `pingall` command, it will show which hosts can be reached by a singl
 <div style="text-align: left;">
     <img width="50%" src="assets/pingall/upper.png"/>
 </div>
+<br>
 
 In addition, to verify the accuracy of the network bandwidth, you can check the bandwidth between two hosts via `iperf <host1> <host2>` command.
 
@@ -115,6 +117,7 @@ By running `pingall` command, it will show which hosts can be reached by a singl
 <div style="text-align: left;">
     <img width="60%" src="assets/pingall/lower.png"/>
 </div>
+<br>
 
 In addition, to verify the accuracy of the network bandwidth, you can check the bandwidth between two hosts via `iperf <host1> <host2>` command.
 
@@ -148,6 +151,7 @@ By running `pingall` command, it will show which hosts can be reached by a singl
 <div style="text-align: left;">
     <img width="60%" src="assets/pingall/all.png"/>
 </div>
+<br>
 
 In addition, to verify the accuracy of the network bandwidth, you can check the bandwidth between two hosts via `iperf <host1> <host2>` command.
 
@@ -184,6 +188,7 @@ By running `pingall` command, it will show which hosts can be reached by a singl
 <div style="text-align: left;">
     <img width="60%" src="assets/pingall/broken.png"/>
 </div>
+<br>
 
 In addition, to verify the accuracy of the network bandwidth, you can check the bandwidth between two hosts via `iperf <host1> <host2>` command.
 

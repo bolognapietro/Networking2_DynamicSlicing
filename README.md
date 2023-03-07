@@ -298,7 +298,7 @@ Moreover, you can view the following informations:
 
 # Presentation
 
-[Presentation](https://www.canva.com/design/DAFb2NEnqjY/-dY28hInsJRnf7H1ylJOug/edit?utm_content=DAFb2NEnqjY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+[Presentation](https://www.canva.com/design/DAFb2NEnqjY/-dY28hInsJRnf7H1ylJOug/view?utm_content=DAFb2NEnqjY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
 # Contacts
 

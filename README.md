@@ -216,7 +216,7 @@ In addition, to verify the accuracy of the network bandwidth, you can check the 
 
 Follow the instruction available at this [link](https://www.granelli-lab.org/researches/relevant-projects/comnetsemu-labs). Once installed, you will need to follow these additional steps:
 
-1. Locate the newly installed VM labeled "*Comnetsemu Ubuntu Stand alone*". Click on the **Settings button** for this VM, and then navigate to the **Network tab**. Once there, select **Adapter 1** and click on the **Advanced button**. From the dropdown menu, select **Port Forwarding**. Next, add the following two rules::
+1. Locate the newly installed VM labeled "*Comnetsemu Ubuntu Stand alone*". Click on the **Settings button** for this VM, and then navigate to the **Network tab**. Once there, select **Adapter 1** and click on the **Advanced button**. From the dropdown menu, select **Port Forwarding**. Next, add the following two rules:
 
    * `Name: SSH, Protocol: TCP, Host Port: 2222, Guest Port 22`.
    * `Name: SOCKET, Protocol: TCP, Host IP: 127.0.0.1, Host Port: 2223, Guest Port: 2223`.

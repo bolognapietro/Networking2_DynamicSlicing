@@ -234,7 +234,7 @@ Follow the instruction available at this [link](https://www.granelli-lab.org/res
 2. Install the required python packages by running `pip install -r requirements.txt` inside the [WebApp](WebApp) folder.
 3. Put the path of the [launcher.py](OnDemandSDNSlices/network/launcher.py) script (**which is in the VM**) in the `LAUNCHER_PATH` variable of the [master.py](WebApp/master.py) script.
 
-> **Note**: if you are logging as **vagrant** inside the VM, change the `SSH_USERNAME` and `SSH_PASSWORD` variables to **vagrant** in the [master.py](WebApp/master.py) script.
+> **Note**: if you are logging as **vagrant** inside the VM, change the values of the `SSH_USERNAME` and `SSH_PASSWORD` variables to "*vagrant*" in the [master.py](WebApp/master.py) script.
 
 # Getting Started - CLI
 

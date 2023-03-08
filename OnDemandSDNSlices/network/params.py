@@ -2,7 +2,7 @@ from os.path import join, dirname, realpath
 import os
 
 SCENARIOS_PATH = os.path.normpath(dirname(realpath(__file__)) + os.sep + os.pardir)
-SCENARIOS_PATH = join(SCENARIOS_PATH,"network")
+SCENARIOS_PATH = join(SCENARIOS_PATH,"scenarios")
 
 CONTROLLER_NAME = "c1"
 CONTROLLER_IP = "127.0.0.1"

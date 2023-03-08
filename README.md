@@ -221,7 +221,7 @@ Follow the instruction available at this [link](https://www.granelli-lab.org/res
    * `Name: SSH, Protocol: TCP, Host Port: 2222, Guest Port 22`.
    * `Name: SOCKET, Protocol: TCP, Host IP: 127.0.0.1, Host Port: 2223, Guest Port: 2223`.
 
-   The first one is used to allow the Web Application on the host machine to connect via SSH to the VM. The second one is used for the socket used for the communication between the Mininet network and the Web Application.
+   The first one is used to allow the Web Application on the host machine to connect via ssh to the VM. The second one is used for the socket used for the communication between the Mininet network and the Web Application.
 
 2. Copy the [OnDemandSDNSlices](OnDemandSDNSlices) folder inside the VM.
 3. Go to [scenarios](OnDemandSDNSlices/scenarios) folder and type `chmod +x *.sh`.

@@ -249,7 +249,7 @@ You are now free to try any command you wish. Simply type `help` to see a list o
 
 Alternatively, instead of using the CLI interface, you can test the Mininet network by connecting to the Web Application and using the provided GUI. In order to do that, start the Web Application by following these steps:
 
-1. Navigate to the [WebApp](WebApp) folder and execute `python3 WebApp.py`.
+1. Navigate to the [WebApp](WebApp) folder and execute `python WebApp.py`.
 2. Now, open your browser and navigate to http://127.0.0.1:5000. 
 
 > **Note**: the port may vary depending on the processes running on your system.

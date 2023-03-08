@@ -224,6 +224,7 @@ Follow the instruction available at this [link](https://www.granelli-lab.org/res
    The first one is used to allow the Web Application on the host machine to connect via SSH to the VM. The second one is used for the socket used for the communication between the Mininet network and the Web Application.
 
 2. Copy the [OnDemandSDNSlices](OnDemandSDNSlices) folder inside the VM.
+3. Go to [scenarios](OnDemandSDNSlices/scenarios) folder and type `chmod +x *.sh`.
 
 > **Note**: the VM must be ON during the entire utilization of the Web Application.
 

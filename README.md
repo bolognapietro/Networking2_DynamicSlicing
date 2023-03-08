@@ -223,16 +223,18 @@ Follow the instruction available at this [link](https://www.granelli-lab.org/res
 
    The first one is used to allow the Web Application on the host machine to connect via ssh to the VM. The second one is used for the socket used for the communication between the Mininet network and the Web Application.
 
-2. Copy the [OnDemandSDNSlices](OnDemandSDNSlices) folder inside the VM.
+2. Copy the [OnDemandSDNSlices](OnDemandSDNSlices) folder inside the VM or, alternatively, you can copy and paste this command to do it automatically: `git clone https://github.com/christiansassi/networking-2-project.git && cd networking-2-project && mv OnDemandSDNSlices .. && cd .. && sudo rm -r networking-2-project && cd OnDemandSDNSlices`.
 3. Go to [scenarios](OnDemandSDNSlices/scenarios) folder and type `chmod +x *.sh`.
 
 > **Note**: the VM must be ON during the entire utilization of the Web Application.
 
 ### WebApp
 
-First, install the required python packages by running `pip install -r requirements.txt` inside the [WebApp](WebApp) folder. Then, if you are logging as **vagrant** inside the VM, change the `SSH_USERNAME` and `SSH_PASSWORD` variables to **vagrant** in the [master.py](WebApp/master.py) script. Finally, put the path of the [launcher.py](OnDemandSDNSlices/network/launcher.py) script (which is on the VM) in the `LAUNCHER_PATH` variable in the [master.py](WebApp/master.py) script.
+1. Copy the [WebApp](WebApp) folder inside the VM.
+2. Install the required python packages by running `pip install -r requirements.txt` inside the [WebApp](WebApp) folder.
+3. Put the path of the [launcher.py](OnDemandSDNSlices/network/launcher.py) script (**which is in the VM**) in the `LAUNCHER_PATH` variable of the [master.py](WebApp/master.py) script.
 
-> **Note**: ensure that the VM remains powered on throughout the entire period of usage of the Web Application.
+> **Note**: if you are logging as **vagrant** inside the VM, change the `SSH_USERNAME` and `SSH_PASSWORD` variables to **vagrant** in the [master.py](WebApp/master.py) script.
 
 # Getting Started - CLI
 

@@ -11,6 +11,7 @@ SOCKET_HOST = "127.0.0.1"
 SOCKET_PORT = 2223
 
 LAUNCHER_PATH = "<LAUNCHER PATH>"
+LAUNCHER_PATH = LAUNCHER_PATH if LAUNCHER_PATH.endswith(".py") else join(LAUNCHER_PATH,"launcher.py")
 
 def connect():
 

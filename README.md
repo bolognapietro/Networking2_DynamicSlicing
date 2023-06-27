@@ -16,8 +16,8 @@
 -   [Scenario 4 - All](#scenario-4---all)
 -   [Scenario 5 - Broken](#scenario-5---broken)
 -   [Installation and Configuration](#installation-and-configuration)
--   [Gettings started - CLI](#getting-started---cli)
--   [Gettings started - WebApp](#getting-started---webapp)
+-   [Getting started - CLI](#getting-started---cli)
+-   [Getting started - WebApp](#getting-started---webapp)
 -   [Presentation](#presentation)
 -   [Contacts](#contacts)
 
